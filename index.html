@@ -165,7 +165,7 @@
 				<div class="tt-ptr-preloader">
 					<div class="tt-ptr-prel-content">
 						<!-- Hint: You may need to change the img height and opacity to match your logo type. You can do this from the "theme.css" file (find: ".tt-ptr-prel-image"). -->
-						<img src="assets/img/logo-light.png" class="tt-ptr-prel-image" alt="Logo">
+						<img src="assets/img/mira-logo.png" class="tt-ptr-prel-image" alt="Logo">
 					</div> <!-- /.tt-ptr-prel-content -->
 				</div> <!-- /.tt-ptr-preloader -->
 			</div>
@@ -300,7 +300,7 @@
 							<div class="ph-caption-inner">
 								<!-- <h2 class="ph-caption-subtitle">Keeping it Real</h2> -->
 								<h1 class="ph-caption-title">The verification<br>Oracle of WEB3</h1>
-								<div class="ph-caption-description max-width-600">The Oracle of real vs synthetic content.</div>
+								<div class="ph-caption-description max-width-600">The Oracle of real vs synthetic content</div>
 							</div>
 						</div>
 
@@ -619,11 +619,41 @@
 									top: 0;
 									bottom: 0;
 									width: 2px;
+									background: transparent;
+									transform: translateX(-50%);
+									z-index: 1;
+								}
+								
+								.timeline-item::after {
+									content: '';
+									position: absolute;
+									left: 50%;
+									top: 90px;
+									bottom: -50px;
+									width: 2px;
 									background: var(--tt-main-color);
 									transform: translateX(-50%);
 									z-index: 1;
 									opacity: 0;
-									animation: fadeInLine 1s ease-out 0.5s forwards;
+									animation: fadeInLine 0.8s ease-out forwards;
+								}
+								
+								.timeline-item:last-child::after {
+									display: none;
+								}
+								
+								.timeline-item:first-child::before {
+									content: '';
+									position: absolute;
+									left: 50%;
+									top: -40px;
+									bottom: calc(100% - 10px);
+									width: 2px;
+									background: var(--tt-main-color);
+									transform: translateX(-50%);
+									z-index: 1;
+									opacity: 0;
+									animation: fadeInLine 0.8s ease-out 0.3s forwards;
 								}
 								
 								@keyframes fadeInLine {
@@ -679,18 +709,7 @@
 									transform: translateX(-50%) scale(1.1);
 								}
 								
-								.timeline-number::before {
-									content: '';
-									position: absolute;
-									left: 50%;
-									top: 50%;
-									width: 60px;
-									height: 60px;
-									background: #1a1a1a;
-									border-radius: 50%;
-									transform: translate(-50%, -50%);
-									z-index: -1;
-								}
+
 								
 								.timeline-number .magnetic-wrap {
 									position: relative;
@@ -792,7 +811,8 @@
 								}
 								
 								@media (max-width: 768px) {
-									.vertical-timeline::before {
+									.timeline-item::after,
+									.timeline-item:first-child::before {
 										left: 40px;
 									}
 									
@@ -889,7 +909,7 @@
 									</div>
 									<div class="timeline-content">
 										<h2 class="timeline-title">Intelligence</h2>
-										<h3 class="timeline-subtitle">Systems & Layers</h3>
+										<h3 class="timeline-subtitle">AI Agents, Systems & Layers</h3>
 										<ul class="timeline-features">
 											<li>Mira Launch - Social Fact-Checking Bot (X/Twitter)</li>
 											<li>Oasis Launch - Community Prediction Market</li>
@@ -909,7 +929,7 @@
 									</div>
 									<div class="timeline-content">
 										<h2 class="timeline-title">Enterprise</h2>
-										<h3 class="timeline-subtitle">& Regulatory Integration</h3>
+										<h3 class="timeline-subtitle">B2B & Regulatory Integration</h3>
 										<ul class="timeline-features">
 											<li>Advanced Enterprise Suite</li>
 											<li>Financial Services & KYC Integration</li>
@@ -953,23 +973,25 @@
 											});
 										});
 										
-										// Animate the central line
-										gsap.set('.vertical-timeline::before', {
+																			// Animate the segmented lines
+									gsap.utils.toArray('.timeline-item::after, .timeline-item::before').forEach((line, index) => {
+										gsap.set(line, {
 											scaleY: 0,
 											transformOrigin: 'top center'
 										});
 										
-										gsap.to('.vertical-timeline::before', {
+										gsap.to(line, {
 											scaleY: 1,
-											duration: 2,
+											duration: 0.8,
+											delay: index * 0.1,
 											ease: "power2.out",
 											scrollTrigger: {
-												trigger: '.vertical-timeline',
-												start: "top 70%",
-												end: "bottom 30%",
+												trigger: line.closest('.timeline-item'),
+												start: "top 80%",
 												toggleActions: "play none none reverse"
 											}
 										});
+									});
 									}
 									
 									// Add intersection observer for fallback
