@@ -499,3 +499,19 @@ body.tt-lightmode-on.tt-posl-light-bg-on #ball.ball-drag-mouse-down {
 body.tt-lightmode-on.tt-posl-light-bg-on #ball .ball-drag-mouse-down-inner {
 	color: var(--tt-light-color);
 }
+
+
+.tt-footer-widget-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
+
+.tt-footer-widget-list li {
+    display: inline; /* Make the list items inline */
+    margin-right: 10px; /* Optional: adds space between items */
+}
+
+.tt-footer-widget-list li a {
+    text-decoration: none; /* Optional: remove underline */
+}
