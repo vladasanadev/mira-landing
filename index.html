@@ -333,7 +333,8 @@
 					<div class="ph-social">
 						<ul>
 							<li><a href="https://x.com/AskMirage" class="tt-magnetic-item" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a></li>
-							<li><a href="https://gitlab.com/yourusername" class="tt-magnetic-item" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a></li> 
+							<li><a href="https://gitlab.com/yourusername" class="tt-magnetic-item" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a></li>
+							<li><a href="https://askmira.gitbook.io/docs" class="tt-magnetic-item" target="_blank" rel="noopener"><i class="fa-solid fa-book"></i></a></li>
 						</ul>
 					</div>
 					<!-- End social buttons -->
@@ -635,8 +636,20 @@
 								}
 								
 								.timeline-item:last-child::after {
-									display: none;
+									content: '';
+									position: absolute;
+									left: 50%;
+									top: 90px;
+									bottom: -120px;
+									width: 2px;
+									background: var(--tt-main-color);
+									transform: translateX(-50%);
+									z-index: 1;
+									opacity: 0;
+									animation: fadeInLine 0.8s ease-out forwards;
 								}
+								
+
 								
 								.timeline-item:first-child::before {
 									content: '';
@@ -808,7 +821,8 @@
 								
 								@media (max-width: 768px) {
 									.timeline-item::after,
-									.timeline-item:first-child::before {
+									.timeline-item:first-child::before,
+									.timeline-item:last-child::after {
 										left: 40px;
 									}
 									
@@ -1083,7 +1097,8 @@
 								
 										
 													<li><a href="https://x.com/AskmiraAI" class="tt-magnetic-item" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a></li>
-													<li><a href="https://gitlab.com/yourusername" class="tt-magnetic-item" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a></li> 
+													<li><a href="https://gitlab.com/yourusername" class="tt-magnetic-item" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a></li>
+													<li><a href="https://askmira.gitbook.io/docs" class="tt-magnetic-item" target="_blank" rel="noopener"><i class="fa-solid fa-book"></i></a></li>
 													
 												
 												
